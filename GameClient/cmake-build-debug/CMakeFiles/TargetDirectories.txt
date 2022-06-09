@@ -1,0 +1,3 @@
+C:/Users/ageev/CLionProject/Game/GameClient/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ageev/CLionProject/Game/GameClient/cmake-build-debug/CMakeFiles/GameClient.dir
+C:/Users/ageev/CLionProject/Game/GameClient/cmake-build-debug/CMakeFiles/rebuild_cache.dir
