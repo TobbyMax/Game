@@ -781,8 +781,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/Users/ageev/CLionProject/Game/GameClient/cmake-build-debug",
-		"source" : "C:/Users/ageev/CLionProject/Game/GameClient"
+		"build" : "C:/Users/ageev/CLionProject/Game/GameServer/cmake-build-debug",
+		"source" : "C:/Users/ageev/CLionProject/Game/GameServer"
 	},
 	"version" : 
 	{

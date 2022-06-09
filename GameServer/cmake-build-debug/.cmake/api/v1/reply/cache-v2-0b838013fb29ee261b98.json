@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/ageev/CLionProject/Game/GameClient/cmake-build-debug"
+			"value" : "c:/Users/ageev/CLionProject/Game/GameServer/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -623,7 +623,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/ageev/CLionProject/Game/GameClient"
+			"value" : "C:/Users/ageev/CLionProject/Game/GameServer"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -635,7 +635,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/GameClient"
+			"value" : "C:/Program Files (x86)/GameServer"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -851,7 +851,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "GameClient"
+			"value" : "GameServer"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1262,7 +1262,7 @@
 			"value" : "C:/Program Files/SFML/lib/libfreetype.a"
 		},
 		{
-			"name" : "GameClient_BINARY_DIR",
+			"name" : "GameServer_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1271,10 +1271,10 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ageev/CLionProject/Game/GameClient/cmake-build-debug"
+			"value" : "C:/Users/ageev/CLionProject/Game/GameServer/cmake-build-debug"
 		},
 		{
-			"name" : "GameClient_IS_TOP_LEVEL",
+			"name" : "GameServer_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1286,7 +1286,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "GameClient_SOURCE_DIR",
+			"name" : "GameServer_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -1295,7 +1295,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/ageev/CLionProject/Game/GameClient"
+			"value" : "C:/Users/ageev/CLionProject/Game/GameServer"
 		},
 		{
 			"name" : "Ogg_LIB",
