@@ -1,3 +1,21 @@
 # ninja log v5
-70	40108	6761544033842937	CMakeFiles/GameClient.dir/main.cpp.obj	7d874c712d260b8a
-40133	44834	6761544082100328	GameClient.exe	608b37f88a01196
+22	3401	6763367179996283	CMakeFiles/game.dir/source/Paddle.cpp.obj	8f20667c1d7bb683
+120	3445	6763367180308789	CMakeFiles/game.dir/source/Info.cpp.obj	386d212cbc9396d7
+59	3423	6763367180152552	CMakeFiles/game.dir/source/Ball.cpp.obj	e5d15fe479403d9e
+41	3437	6763367180308789	CMakeFiles/game.dir/source/Score.cpp.obj	16c812f8cd4ee9fc
+3539	10711	6763367252806925	game.exe	acd308a2ad7d346d
+2	3426	6763367180152552	CMakeFiles/game.dir/source/main.cpp.obj	554888eb276e982
+82	3539	6763367181402485	CMakeFiles/game.dir/source/Game.cpp.obj	aec6c6fd88bebdcc
+7	4106	6765654427376186	CMakeFiles/game.dir/source/main.cpp.obj	d063bc6ddad9616a
+31	4436	6765654428001180	CMakeFiles/game.dir/source/Paddle.cpp.obj	70fcb0d6e7596f24
+54	4437	6765654428001180	CMakeFiles/game.dir/source/Ball.cpp.obj	49f696f5db2c4930
+48	4438	6765654428157415	CMakeFiles/game.dir/source/Score.cpp.obj	f69635de749d270b
+61	4439	6765654428001180	CMakeFiles/game.dir/source/Info.cpp.obj	18221795c39d0e63
+40	4440	6765654428157415	CMakeFiles/game.dir/source/Game.cpp.obj	35af5959e847bb4b
+4440	9533	6765654481906046	game.exe	acd308a2ad7d346d
+10	2783	6765655137386913	CMakeFiles/game.dir/source/main.cpp.obj	d063bc6ddad9616a
+2783	4246	6765655151917793	game.exe	acd308a2ad7d346d
+6	828	6765661004825747	CMakeFiles/game.dir/source/main.cpp.obj	d063bc6ddad9616a
+830	2219	6765661018575406	game.exe	acd308a2ad7d346d
+8	960	6765663392358387	CMakeFiles/game.dir/source/main.cpp.obj	d063bc6ddad9616a
+961	2346	6765663406108016	game.exe	acd308a2ad7d346d
