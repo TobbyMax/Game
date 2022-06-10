@@ -22,8 +22,8 @@ public:
     void initPhysics();
     void move(const float dir_x, const float dir_y);
     void updatePhysics();
-    void update();
-    void updateMovement();
+    void update(char key);
+    void updateMovement(char key);
     Vector2<float> getVelocity();
 };
 

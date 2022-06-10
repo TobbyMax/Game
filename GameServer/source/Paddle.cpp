@@ -55,23 +55,15 @@ void Paddle::updatePhysics() {
 
     paddle.move(velocity);
 }
-void Paddle::update() {
-    updateMovement();
+void Paddle::update(char key) {
+    updateMovement(key);
     updatePhysics();
 }
-void Paddle::updateMovement() {
-    if (orientation == "left") {
-        if (Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
-            move(0, -1);
-        } else if (Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
-            move(0, 1);
-        }
-    } else {
-        if (Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
-            move(0, -1);
-        } else if (Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
-            move(0, 1);
-        }
+void Paddle::updateMovement(char key) {
+    if (key == 3) {
+        move(0, -1);
+    } else if (key == 4) {
+        move(0, 1);
     }
 }
 
