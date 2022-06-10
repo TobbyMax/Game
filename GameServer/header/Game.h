@@ -6,7 +6,11 @@
 #include "Score.h"
 #include "Info.h"
 #include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
 using namespace sf;
+
+#define CLIENT_PORT 55001
+#define SERVER_PORT 55002
 
 class Game {
 private:
@@ -34,6 +38,8 @@ private:
     Info endInfo;
 
     int pointsToEnd;
+    UdpSocket socket;
+    std::map<IpAddress, unsigned short> computerID;
 public:
     Game();
     bool isGameOver();
@@ -42,6 +48,7 @@ public:
     void closeWindow();
     void checkTheEnd(Score leftScore, Score rightScore);
     void resetGame();
+    void waitForConnection();
 };
 
 #endif //GAME_GAME_H
