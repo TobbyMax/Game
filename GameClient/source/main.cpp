@@ -11,6 +11,7 @@ int main()
 {
     sf::UdpSocket socket;
     socket.bind(CLIENT_PORT);
+    socket.setBlocking(true);
 
     // Send a message to 10.5.0.2 on port 55002
     std::string message = "Hi, I am " + sf::IpAddress::getLocalAddress().toString();
@@ -21,10 +22,15 @@ int main()
     std::size_t received = 0;
     sf::IpAddress sender;
     unsigned short port;
-    socket.receive(buffer, sizeof(buffer), received, sender, port);
-    if (received > 0) {
+    Packet packet;
+    float shit;
+    socket.receive(packet, sender, port);
+    packet >> shit;
+    cout << shit << endl;
+
+    /*if (received > 0) {
         std::cout << sender.toString() << " said: " << buffer << std::endl;
-    }
+    }*/
 
     Game game;
     while (!game.isGameOver()) {

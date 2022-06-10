@@ -3,7 +3,7 @@
 Game::Game() {
     this->windowWidth = 800.f;
     this->windowHeight = 600.f;
-    this->title = "Game";
+    this->title = "Game 1";
     this->frameLimit = 60.f;
 
     this->window.create(VideoMode(windowWidth, windowHeight), title);
