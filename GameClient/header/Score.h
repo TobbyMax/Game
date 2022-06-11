@@ -16,6 +16,7 @@ public:
     void plusOne();
     void minusOne();
     int getPoints();
+    void setPoints(int playerPoints);
 };
 
 

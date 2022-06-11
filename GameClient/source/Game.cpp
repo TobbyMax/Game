@@ -1,4 +1,5 @@
 #include "../header/Game.h"
+#include <iostream>
 
 Game::Game() {
     this->windowWidth = 800.f;
@@ -10,6 +11,8 @@ Game::Game() {
     this->window.setFramerateLimit(frameLimit);
     this->window.setVerticalSyncEnabled(true);
 
+    socket.bind(CLIENT_PORT);
+    socket.setBlocking(true);
     resetGame();
 }
 
@@ -19,31 +22,85 @@ bool Game::isGameOver() {
 
 void Game::update() {
     Event event;
+    int key = -1;
+    Packet outbox;
     while (window.pollEvent(event)) {
+        std::cout << event.type << std::endl;
         if (event.type == Event::Closed) {
-            this->gameOver = true;
+            //this->gameOver = true;
+            key = 0;
+            outbox << key;
+            socket.send(outbox, SERVER_IP, SERVER_PORT);
         }
         if (event.type == Event::KeyPressed) {
-            if (isJustStarted) {
-                this->isJustStarted = false;  // press any button and start a game
-            }
             if (isJustEnded) {
                 if (event.key.code == Keyboard::Enter) {
-                    resetGame();
+                    //resetGame();
+                    key = 1;
+                    outbox << key;
+                    socket.send(outbox, SERVER_IP, SERVER_PORT);
                     return;
                 }
             }
 
             if (event.key.code == Keyboard::Escape) {
-                isPaused = !isPaused;
+                // isPaused = !isPaused;
+                key = 2;
+                outbox << key;
+                socket.send(outbox, SERVER_IP, SERVER_PORT);
             }
-            if (event.key.code == Keyboard::Tilde) {
+            /*
+             * if (event.key.code == Keyboard::Tilde) {
                 rightScore->minusOne();
+            }
+             */
+            if (Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
+                key = 3;
+                outbox << key;
+                socket.send(outbox, SERVER_IP, SERVER_PORT);
+            } else if (Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
+                key = 4;
+                outbox << key;
+                socket.send(outbox, SERVER_IP, SERVER_PORT);
+            }
+            if (isJustStarted) {
+                //this->isJustStarted = false;  // press any button and start a game
+                key = 5;
+                outbox << key;
+                socket.send(outbox, SERVER_IP, SERVER_PORT);
             }
         }
     }
 
-    if (!gameOver) {
+    Packet packet;
+    sf::IpAddress sender;
+    unsigned short port;
+    float xl, yl, xr, yr, xBall, yBall;
+    int leftPoints, rightPoints;
+    socket.receive(packet, sender, port);
+
+    packet >> xl >> yl;
+    packet >> xr >> yr;
+    packet >> xBall >> yBall;
+    packet >> gameOver >> isPaused >> isJustStarted >> isJustEnded;
+    packet >> leftPoints >> rightPoints;
+
+    leftPaddle->paddle.setPosition(xl, yl);
+    rightPaddle->paddle.setPosition(xr, yr);
+    ball->ball.setPosition(xBall, yBall);
+
+    leftScore->setPoints(leftPoints);
+    rightScore->setPoints(rightPoints);
+
+    std::cout << "Left paddle:" << xl << " " << yl << std::endl;
+    std::cout << "Right paddle:" << xr << " " << yr << std::endl;
+    std::cout << "Ball:" << xBall << " " << yBall << std::endl;
+    std::cout << "Score:" << leftPoints << " " << rightPoints << std::endl;
+    std::cout << "gameOver: " << gameOver << std::endl;
+    std::cout << "isPaused: " << isPaused << std::endl;
+    std::cout << "isJustStarted: " << isJustStarted << std::endl;
+    std::cout << "isJustEnded: " << isJustEnded << std::endl;
+    /*if (!gameOver) {
         if (!isPaused && !isJustStarted) {
             leftPaddle->update();
             rightPaddle->update();
@@ -52,7 +109,7 @@ void Game::update() {
             rightScore->update();
             checkTheEnd(*leftScore, *rightScore);
         }
-    }
+    }*/
 }
 
 void Game::draw() {
@@ -110,4 +167,11 @@ void Game::resetGame() {
     this->startInfo.setStartText();
 
     this->pointsToEnd = 3;
+}
+
+void Game::connectToServer() {
+    // CHANGE LATER
+    std::string message = "Hi, I am " + sf::IpAddress::getLocalAddress().toString();
+    socket.send(message.c_str(), message.size() + 1,SERVER_IP, SERVER_PORT);
+    socket.setBlocking(true);
 }

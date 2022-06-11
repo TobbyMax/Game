@@ -37,3 +37,7 @@ void Score::minusOne() {
 int Score::getPoints() {
     return this->points;
 }
+
+void Score::setPoints(int playerPoints) {
+    this->points = playerPoints;
+}

@@ -46,22 +46,22 @@ void Game::update() {
         }
     } */
 
-    char key[1];
-    key[0] = -1;
-    std::size_t received = 0;
+    int key = -1;
+    Packet inbox;
     sf::IpAddress sender;
     unsigned short port;
-    socket.receive(key, sizeof(key), received, sender, port);
-
-    if (received > 0) {
-        if (*key == 0) {
+    socket.receive(inbox, sender, port);
+    inbox >> key;
+    if (key != -1) {
+        std::cout << key << std::endl;
+        if (key == 0) {
             this->gameOver = true;
-        } else if (*key == 1) {
+        } else if (key == 1) {
             if (isJustEnded) {
                 resetGame();
                 return;
             }
-        } else if (*key == 2) {
+        } else if (key == 2) {
             isPaused = !isPaused;
         }
         if (isJustStarted) {
@@ -73,20 +73,25 @@ void Game::update() {
     if (!gameOver) {
         if (!isPaused && !isJustStarted) {
             if (position == 0) {
-                leftPaddle->update(*key);
+                leftPaddle->update(key);
                 rightPaddle->update(-1);
             } else if (position == 1) {
                 leftPaddle->update(-1);
-                rightPaddle->update(*key);
+                rightPaddle->update(key);
             }
-            leftPaddle->update(*key);
-            rightPaddle->update(*key);
+            // leftPaddle->update(*key);
+            // rightPaddle->update(*key);
             ball->update(*leftPaddle, *rightPaddle, *leftScore, *rightScore);
             leftScore->update();
             rightScore->update();
             checkTheEnd(*leftScore, *rightScore);
         }
     }
+
+//    std::cout << "gameOver: " << gameOver << std::endl;
+//    std::cout << "isPaused: " << isPaused << std::endl;
+//    std::cout << "isJustStarted: " << isJustStarted << std::endl;
+//    std::cout << "isJustEnded: " << isJustEnded << std::endl;
 
     Packet packet;
     packet << leftPaddle->paddle.getPosition().x << leftPaddle->paddle.getPosition().y;
@@ -95,9 +100,10 @@ void Game::update() {
     packet << gameOver << isPaused << isJustStarted << isJustEnded;
     packet << leftScore->getPoints() << rightScore->getPoints();
 
-    for (auto it = computerID.begin(); it != computerID.end(); it++) {
+    /*for (auto it = computerID.begin(); it != computerID.end(); it++) {
         socket.send(packet, it->first, CLIENT_PORT);
-    }
+    }*/
+    socket.send(packet, "172.17.54.164", CLIENT_PORT);
 }
 
 void Game::draw() {
@@ -158,12 +164,12 @@ void Game::resetGame() {
 }
 
 void Game::waitForConnection() {
-    while (computerID.size() < 2) {
+    while (computerID.size() < 1) {
         char buffer[1024];
         std::size_t received = 0;
         sf::IpAddress sender;
         unsigned short port;
-        socket.receive(buffer, sizeof(buffer), received, sender, port);
+        this->socket.receive(buffer, sizeof(buffer), received, sender, port);
         if (received > 0) {
             computerID[sender] = computerID.size();
             std::cout << sender.toString() << " said: " << buffer << std::endl;
