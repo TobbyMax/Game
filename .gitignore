@@ -1,0 +1,4 @@
+GameServer/cmake-build-debug
+GameClient/cmake-build-debug
+GameServer/.idea
+GameClient/.idea
