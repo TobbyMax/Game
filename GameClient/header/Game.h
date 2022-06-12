@@ -7,10 +7,11 @@
 #include "Info.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
+#include <thread>
 
 #define CLIENT_PORT 55001
 #define SERVER_PORT 55002
-#define SERVER_IP "172.17.54.164"
+#define SERVER_IP "192.168.0.108"
 
 using namespace sf;
 
@@ -52,6 +53,8 @@ public:
     void resetGame();
 
     void connectToServer();
+    void startGame();
+    void eventPoll();
 };
 
 #endif //GAME_GAME_H

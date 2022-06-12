@@ -40,4 +40,5 @@ int Score::getPoints() {
 
 void Score::setPoints(int playerPoints) {
     this->points = playerPoints;
+    this->update();
 }

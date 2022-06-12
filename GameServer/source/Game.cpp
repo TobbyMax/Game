@@ -1,5 +1,6 @@
 #include "../header/Game.h"
 #include <iostream>
+#include <thread>
 
 Game::Game() {
     this->windowWidth = 800.f;
@@ -100,10 +101,19 @@ void Game::update() {
     packet << gameOver << isPaused << isJustStarted << isJustEnded;
     packet << leftScore->getPoints() << rightScore->getPoints();
 
+    std::cout << "\nLeft paddle:" << leftPaddle->paddle.getPosition().x << " " << leftPaddle->paddle.getPosition().y << std::endl;
+    std::cout << "Right paddle:" << rightPaddle->paddle.getPosition().x << " " << rightPaddle->paddle.getPosition().y << std::endl;
+    std::cout << "Ball:" << ball->ball.getPosition().x << " " << ball->ball.getPosition().x << std::endl;
+    std::cout << "Score:" << leftScore->getPoints() << " " << rightScore->getPoints() << std::endl;
+    std::cout << "gameOver: " << gameOver << std::endl;
+    std::cout << "isPaused: " << isPaused << std::endl;
+    std::cout << "isJustStarted: " << isJustStarted << std::endl;
+    std::cout << "isJustEnded: " << isJustEnded << std::endl;
     /*for (auto it = computerID.begin(); it != computerID.end(); it++) {
         socket.send(packet, it->first, CLIENT_PORT);
     }*/
-    socket.send(packet, "172.17.54.164", CLIENT_PORT);
+    socket.send(packet, "192.168.0.108", CLIENT_PORT);
+    std::this_thread::sleep_for(std::chrono::milliseconds(13));
 }
 
 void Game::draw() {

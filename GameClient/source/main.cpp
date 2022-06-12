@@ -10,10 +10,7 @@ int main()
     Game game;
 
     game.connectToServer();
-    while (!game.isGameOver()) {
-        game.update();
-        game.draw();
-    }
-    game.closeWindow();
+    game.startGame();
+
     return 0;
 }
