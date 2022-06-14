@@ -11,7 +11,7 @@
 
 #define CLIENT_PORT 55001
 #define SERVER_PORT 55002
-#define SERVER_IP "192.168.0.108"
+#define SERVER_IP "172.17.54.172"
 
 using namespace sf;
 

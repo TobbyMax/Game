@@ -63,7 +63,7 @@ void Game::update() {
             checkTheEnd(*leftScore, *rightScore);
         }
     }
-    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    std::this_thread::sleep_for(std::chrono::milliseconds(4));
 
 //    std::cout << "gameOver: " << gameOver << std::endl;
 //    std::cout << "isPaused: " << isPaused << std::endl;
@@ -159,11 +159,11 @@ void Game::sendData() {
 //        std::cout << "isPaused: " << isPaused << std::endl;
 //        std::cout << "isJustStarted: " << isJustStarted << std::endl;
 //        std::cout << "isJustEnded: " << isJustEnded << std::endl;
-        /*for (auto it = computerID.begin(); it != computerID.end(); it++) {
+        for (auto it = computerID.begin(); it != computerID.end(); ++it) {
             socket.send(packet, it->first, CLIENT_PORT);
-        }*/
-        socket.send(packet, "192.168.0.108", CLIENT_PORT);
-        std::this_thread::sleep_for(std::chrono::milliseconds(2));
+        }
+        // socket.send(packet, "172.17.54.172", CLIENT_PORT);
+        std::this_thread::sleep_for(std::chrono::milliseconds(6));
     }
 }
 

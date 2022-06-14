@@ -94,16 +94,16 @@ void Game::update() {
 
         leftScore->setPoints(leftPoints);
         rightScore->setPoints(rightPoints);
-        std::cout << "\nLeft paddle:" << xl << " " << yl << std::endl;
-        std::cout << "Right paddle:" << xr << " " << yr << std::endl;
-        std::cout << "Ball:" << xBall << " " << yBall << std::endl;
-        std::cout << "Score:" << leftPoints << " " << rightPoints << std::endl;
-        std::cout << "gameOver: " << gameOver << std::endl;
-        std::cout << "isPaused: " << isPaused << std::endl;
-        std::cout << "isJustStarted: " << isJustStarted << std::endl;
-        std::cout << "isJustEnded: " << isJustEnded << std::endl;
+//        std::cout << "\nLeft paddle:" << xl << " " << yl << std::endl;
+//        std::cout << "Right paddle:" << xr << " " << yr << std::endl;
+//        std::cout << "Ball:" << xBall << " " << yBall << std::endl;
+//        std::cout << "Score:" << leftPoints << " " << rightPoints << std::endl;
+//        std::cout << "gameOver: " << gameOver << std::endl;
+//        std::cout << "isPaused: " << isPaused << std::endl;
+//        std::cout << "isJustStarted: " << isJustStarted << std::endl;
+//        std::cout << "isJustEnded: " << isJustEnded << std::endl;
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(13));
+        std::this_thread::sleep_for(std::chrono::milliseconds(6));
     }
     /*if (!gameOver) {
         if (!isPaused && !isJustStarted) {
