@@ -1,4 +1,10 @@
-GameServer/cmake-build-debug
 GameClient/cmake-build-debug
+GameServer/cmake-build-debug
+GameServer/cmake-build-debug/.ninja_deps
+GameServer/cmake-build-debug/.ninja_log
+GameServer/cmake-build-debug/Testing/Temporary/LastTest.log
+GameClient/cmake-build-debug/.ninja_deps
+GameClient/cmake-build-debug/.ninja_log
+GameClient/cmake-build-debug/Testing/Temporary/LastTest.log
 GameServer/.idea
 GameClient/.idea
