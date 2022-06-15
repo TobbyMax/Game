@@ -14,7 +14,6 @@ public:
     Score(String orientation);
     void update();
     void plusOne();
-    void minusOne();
     int getPoints();
     void setPoints(int playerPoints);
 };
