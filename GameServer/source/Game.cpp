@@ -46,8 +46,6 @@ void Game::update() {
                 leftPaddle->update(-1);
                 rightPaddle->update(key);
             }
-            // leftPaddle->update(*key);
-            // rightPaddle->update(*key);
             ball->update(*leftPaddle, *rightPaddle, *leftScore, *rightScore);
             leftScore->update();
             rightScore->update();
