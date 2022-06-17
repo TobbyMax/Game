@@ -45,7 +45,6 @@ public:
     bool isGameOver();
     void update();
     void draw();
-    void closeWindow();
     void checkTheEnd(Score leftScore, Score rightScore);
     void resetGame();
     void waitForConnection();

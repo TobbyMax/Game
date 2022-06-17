@@ -85,10 +85,6 @@ void Game::draw() {
     }
 }
 
-void Game::closeWindow() {
-    window.close();
-}
-
 void Game::checkTheEnd(Score leftScore, Score rightScore) {
     if (leftScore.getPoints() == pointsToEnd && !isJustEnded) {
         endInfo.setPlayerWonText(0);
