@@ -8,10 +8,6 @@ Game::Game() {
     this->title = "Game";
     this->frameLimit = 60.f;
 
-    // this->window.create(VideoMode(windowWidth, windowHeight), title);
-    // this->window.setFramerateLimit(frameLimit);
-    // this->window.setVerticalSyncEnabled(true);
-
     socket.bind(SERVER_PORT);
     socket.setBlocking(false);
     resetGame();
@@ -64,11 +60,6 @@ void Game::update() {
         }
     }
     std::this_thread::sleep_for(std::chrono::milliseconds(4));
-
-//    std::cout << "gameOver: " << gameOver << std::endl;
-//    std::cout << "isPaused: " << isPaused << std::endl;
-//    std::cout << "isJustStarted: " << isJustStarted << std::endl;
-//    std::cout << "isJustEnded: " << isJustEnded << std::endl;
 }
 
 void Game::draw() {
@@ -151,18 +142,11 @@ void Game::sendData() {
         packet << gameOver << isPaused << isJustStarted << isJustEnded;
         packet << leftScore->getPoints() << rightScore->getPoints();
 
-//        std::cout << "\nLeft paddle:" << leftPaddle->paddle.getPosition().x << " " << leftPaddle->paddle.getPosition().y << std::endl;
-//        std::cout << "Right paddle:" << rightPaddle->paddle.getPosition().x << " " << rightPaddle->paddle.getPosition().y << std::endl;
-//        std::cout << "Ball:" << ball->ball.getPosition().x << " " << ball->ball.getPosition().x << std::endl;
-//        std::cout << "Score:" << leftScore->getPoints() << " " << rightScore->getPoints() << std::endl;
-//        std::cout << "gameOver: " << gameOver << std::endl;
-//        std::cout << "isPaused: " << isPaused << std::endl;
-//        std::cout << "isJustStarted: " << isJustStarted << std::endl;
-//        std::cout << "isJustEnded: " << isJustEnded << std::endl;
+
         for (auto it = computerID.begin(); it != computerID.end(); ++it) {
             socket.send(packet, it->first, CLIENT_PORT);
         }
-        // socket.send(packet, "172.17.54.172", CLIENT_PORT);
+
         std::this_thread::sleep_for(std::chrono::milliseconds(6));
     }
 }
