@@ -57,29 +57,6 @@ void Game::update() {
     std::this_thread::sleep_for(std::chrono::milliseconds(4));
 }
 
-/*void Game::draw() {
-    if (!gameOver) {
-        window.clear(Color(255, 255, 204));
-
-        if (isJustStarted) {
-            window.draw(startInfo.getInfo());
-        } else if (isJustEnded) {
-            window.draw(endInfo.getInfo());
-        } else {
-            if (isPaused) {
-                window.draw(pauseInfo.getInfo());
-            }
-            window.draw(rightPaddle->paddle);
-            window.draw(leftPaddle->paddle);
-            window.draw(ball->ball);
-            window.draw(leftScore->text);
-            window.draw(rightScore->text);
-        }
-
-        window.display();
-    }
-}*/
-
 void Game::checkTheEnd(Score leftScore, Score rightScore) {
     if (leftScore.getPoints() == pointsToEnd && !isJustEnded) {
         endInfo.setPlayerWonText(0);
