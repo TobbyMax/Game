@@ -54,3 +54,6 @@ We still have a desire to clean the code and make it more readable, but now we d
 
 ## License
 MIT License (will be added later)
+
+![image](https://user-images.githubusercontent.com/46136468/174274148-e0fc566f-7a6e-45f7-af2c-8863114a0ae0.png)
+
