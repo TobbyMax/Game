@@ -29,15 +29,11 @@ void Score::plusOne() {
     update();
 }
 
-void Score::minusOne() {
-    (this->points)--;
-    update();
-}
-
 int Score::getPoints() {
     return this->points;
 }
 
 void Score::setPoints(int playerPoints) {
     this->points = playerPoints;
+    this->update();
 }

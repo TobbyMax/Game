@@ -49,6 +49,8 @@ public:
     void checkTheEnd(Score leftScore, Score rightScore);
     void resetGame();
     void waitForConnection();
+    void startGame();
+    void sendData();
 };
 
 #endif //GAME_GAME_H

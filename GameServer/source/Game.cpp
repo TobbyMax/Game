@@ -1,5 +1,6 @@
 #include "../header/Game.h"
 #include <iostream>
+#include <thread>
 
 Game::Game() {
     this->windowWidth = 800.f;
@@ -21,31 +22,6 @@ bool Game::isGameOver() {
 }
 
 void Game::update() {
-    // Event event;
-    /* while (window.pollEvent(event)) {
-        if (event.type == Event::Closed) {
-            this->gameOver = true;
-        }
-        if (event.type == Event::KeyPressed) {
-            if (isJustStarted) {
-                this->isJustStarted = false;  // press any button and start a game
-            }
-            if (isJustEnded) {
-                if (event.key.code == Keyboard::Enter) {
-                    resetGame();
-                    return;
-                }
-            }
-
-            if (event.key.code == Keyboard::Escape) {
-                isPaused = !isPaused;
-            }
-            if (event.key.code == Keyboard::Tilde) {
-                rightScore->minusOne();
-            }
-        }
-    } */
-
     int key = -1;
     Packet inbox;
     sf::IpAddress sender;
@@ -87,23 +63,12 @@ void Game::update() {
             checkTheEnd(*leftScore, *rightScore);
         }
     }
+    std::this_thread::sleep_for(std::chrono::milliseconds(4));
 
 //    std::cout << "gameOver: " << gameOver << std::endl;
 //    std::cout << "isPaused: " << isPaused << std::endl;
 //    std::cout << "isJustStarted: " << isJustStarted << std::endl;
 //    std::cout << "isJustEnded: " << isJustEnded << std::endl;
-
-    Packet packet;
-    packet << leftPaddle->paddle.getPosition().x << leftPaddle->paddle.getPosition().y;
-    packet << rightPaddle->paddle.getPosition().x << rightPaddle->paddle.getPosition().y;
-    packet << ball->ball.getPosition().x << ball->ball.getPosition().y;
-    packet << gameOver << isPaused << isJustStarted << isJustEnded;
-    packet << leftScore->getPoints() << rightScore->getPoints();
-
-    /*for (auto it = computerID.begin(); it != computerID.end(); it++) {
-        socket.send(packet, it->first, CLIENT_PORT);
-    }*/
-    socket.send(packet, "172.17.54.164", CLIENT_PORT);
 }
 
 void Game::draw() {
@@ -176,3 +141,38 @@ void Game::waitForConnection() {
         }
     }
 }
+
+void Game::sendData() {
+    while(!gameOver) {
+        Packet packet;
+        packet << leftPaddle->paddle.getPosition().x << leftPaddle->paddle.getPosition().y;
+        packet << rightPaddle->paddle.getPosition().x << rightPaddle->paddle.getPosition().y;
+        packet << ball->ball.getPosition().x << ball->ball.getPosition().y;
+        packet << gameOver << isPaused << isJustStarted << isJustEnded;
+        packet << leftScore->getPoints() << rightScore->getPoints();
+
+//        std::cout << "\nLeft paddle:" << leftPaddle->paddle.getPosition().x << " " << leftPaddle->paddle.getPosition().y << std::endl;
+//        std::cout << "Right paddle:" << rightPaddle->paddle.getPosition().x << " " << rightPaddle->paddle.getPosition().y << std::endl;
+//        std::cout << "Ball:" << ball->ball.getPosition().x << " " << ball->ball.getPosition().x << std::endl;
+//        std::cout << "Score:" << leftScore->getPoints() << " " << rightScore->getPoints() << std::endl;
+//        std::cout << "gameOver: " << gameOver << std::endl;
+//        std::cout << "isPaused: " << isPaused << std::endl;
+//        std::cout << "isJustStarted: " << isJustStarted << std::endl;
+//        std::cout << "isJustEnded: " << isJustEnded << std::endl;
+        for (auto it = computerID.begin(); it != computerID.end(); ++it) {
+            socket.send(packet, it->first, CLIENT_PORT);
+        }
+        // socket.send(packet, "172.17.54.172", CLIENT_PORT);
+        std::this_thread::sleep_for(std::chrono::milliseconds(6));
+    }
+}
+
+void Game::startGame() {
+    std::thread sendThread(&Game::sendData, this);
+    while (!this->isGameOver()) {
+        this->update();
+    }
+    sendThread.join();
+}
+
+

@@ -7,10 +7,11 @@
 #include "Info.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
+#include <thread>
 
 #define CLIENT_PORT 55001
 #define SERVER_PORT 55002
-#define SERVER_IP "172.17.54.164"
+#define SERVER_IP "25.48.201.122"
 
 using namespace sf;
 
@@ -26,6 +27,7 @@ private:
     bool isPaused;
     bool isJustStarted;
     bool isJustEnded;
+    bool isConnected;
 
     Paddle *leftPaddle;
     Paddle *rightPaddle;
@@ -38,6 +40,7 @@ private:
     Info pauseInfo;
     Info startInfo;
     Info endInfo;
+    Info connectionInfo;
 
     int pointsToEnd;
 
@@ -48,10 +51,12 @@ public:
     void update();
     void draw();
     void closeWindow();
-    void checkTheEnd(Score leftScore, Score rightScore);
+    void checkTheEnd();
     void resetGame();
 
     void connectToServer();
+    void startGame();
+    void eventPoll();
 };
 
 #endif //GAME_GAME_H

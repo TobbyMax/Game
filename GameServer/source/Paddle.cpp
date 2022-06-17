@@ -55,11 +55,11 @@ void Paddle::updatePhysics() {
 
     paddle.move(velocity);
 }
-void Paddle::update(char key) {
+void Paddle::update(int key) {
     updateMovement(key);
     updatePhysics();
 }
-void Paddle::updateMovement(char key) {
+void Paddle::updateMovement(int key) {
     if (key == 3) {
         move(0, -1);
     } else if (key == 4) {

@@ -14,6 +14,7 @@ Info::Info() {
     this->possibleConditions[2] = "Game over!\nPlayer 1 won";
     this->possibleConditions[3] = "Game over!\nPlayer 2 won";
     this->possibleConditions[4] = "\nPress Enter to start again";
+    this->possibleConditions[5] = "Waiting for connection...";
 }
 
 Text Info::getInfo() {
@@ -38,4 +39,9 @@ void Info::setPlayerWonText(int position) {
         condition.setString(possibleConditions[3]);
     }
     condition.setString(condition.getString() + possibleConditions[4]);
+}
+
+void Info::setNoConnectionText() {
+    condition.setPosition(250, 250);
+    condition.setString(possibleConditions[5]);
 }
