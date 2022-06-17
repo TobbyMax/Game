@@ -129,7 +129,7 @@ void Game::resetGame() {
 }
 
 void Game::waitForConnection() {
-    while (computerID.size() < 1) {
+    while (computerID.size() < 2) {
         char buffer[1024];
         std::size_t received = 0;
         sf::IpAddress sender;
