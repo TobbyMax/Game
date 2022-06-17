@@ -13,6 +13,17 @@ We still have a desire to clean the code and make it more readable, but now we d
 
 ## Table of Contents (i think it's optional)
 
+## Dependencies
+```IDE (CLion is preffered)```
+
+```Stable and fast internet connection```
+
+```Good mood and a desire to win!```
+
+> SFML library is not required, it is already installed in the project (even twice!).
+
+> CMakeList.txt links everything greatly so you don't have to care about it.
+
 ## How to Install and Run the Project
 1. Clone this repository on your computer.
 2. Create a local network with your friends and connect to it (use, for instance, [Hamachi](https://www.vpn.net/)).
@@ -37,3 +48,5 @@ We still have a desire to clean the code and make it more readable, but now we d
 
 
 10. Game will be ended, when some player will close the game window or lose the connection with a server.
+
+## Credits
