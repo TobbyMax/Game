@@ -3,11 +3,6 @@
 #include <thread>
 
 Game::Game() {
-    this->windowWidth = 800.f;
-    this->windowHeight = 600.f;
-    this->title = "Game";
-    this->frameLimit = 60.f;
-
     socket.bind(SERVER_PORT);
     socket.setBlocking(false);
     resetGame();
@@ -62,7 +57,7 @@ void Game::update() {
     std::this_thread::sleep_for(std::chrono::milliseconds(4));
 }
 
-void Game::draw() {
+/*void Game::draw() {
     if (!gameOver) {
         window.clear(Color(255, 255, 204));
 
@@ -83,7 +78,7 @@ void Game::draw() {
 
         window.display();
     }
-}
+}*/
 
 void Game::checkTheEnd(Score leftScore, Score rightScore) {
     if (leftScore.getPoints() == pointsToEnd && !isJustEnded) {

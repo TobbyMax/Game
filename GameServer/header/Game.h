@@ -14,12 +14,6 @@ using namespace sf;
 
 class Game {
 private:
-    RenderWindow window;
-    int windowWidth;
-    int windowHeight;
-    String title;
-    int frameLimit;
-
     bool gameOver;
     bool isPaused;
     bool isJustStarted;
