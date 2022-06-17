@@ -55,3 +55,4 @@ We still have a desire to clean the code and make it more readable, but now we d
 [Maksim Ageev](https://t.me/maxveega)
 
 ## License
+MIT License (will be added later)
