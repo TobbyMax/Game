@@ -11,8 +11,6 @@ We faced numerous challenges during the devising of the game, such as issues wit
 
 We still have a desire to clean the code and make it more readable, but now we don't have sufficient amount of time to cope with it because of exams in university 😞.
 
-## Table of Contents (i think it's optional)
-
 ## Dependencies
 ```IDE (CLion is preffered)```
 
