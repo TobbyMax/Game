@@ -50,3 +50,8 @@ We still have a desire to clean the code and make it more readable, but now we d
 10. Game will be ended, when some player will close the game window or lose the connection with a server.
 
 ## Credits
+[Pasha Medvedev](https://t.me/nightshift48)
+
+[Maksim Ageev](https://t.me/maxveega)
+
+## License
