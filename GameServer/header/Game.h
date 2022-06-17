@@ -14,12 +14,6 @@ using namespace sf;
 
 class Game {
 private:
-    RenderWindow window;
-    int windowWidth;
-    int windowHeight;
-    String title;
-    int frameLimit;
-
     bool gameOver;
     bool isPaused;
     bool isJustStarted;
@@ -44,8 +38,6 @@ public:
     Game();
     bool isGameOver();
     void update();
-    void draw();
-    void closeWindow();
     void checkTheEnd(Score leftScore, Score rightScore);
     void resetGame();
     void waitForConnection();
